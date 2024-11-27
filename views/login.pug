@@ -1,0 +1,130 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Login Form
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url("images/p13.jpeg");
+      }
+      .form-container {
+        background-color: rgba(255, 182, 193, 0.7);
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 400px;
+        border-radius: 5px;
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: black;
+      }
+      form {
+        display: grid;
+        gap: 20px;
+      }
+      label {
+        color: #333;
+        margin-bottom: 5px;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+      input:focus {
+        outline: none;
+        border-color: #004080;
+      }
+      span.error {
+        font-size: 14px;
+        color: red;
+        display: block;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: lightsalmon;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: black;
+      }
+      .footer {
+        margin-top: 20px;
+        text-align: center;
+      }
+      @media (max-width: 600px) {
+        form {
+          grid-template-columns: 1fr;
+        }
+      }
+  body
+    .form-container
+      h2 Login Form
+      form#loginForm(action='/login' method='POST')
+        div
+          label(for='email') Email:
+          input#email(type='email' name='email' placeholder='Email')
+          span#emailError.error
+        div
+          label(for='password') Password:
+          input#password(type='password' name='password' placeholder='Password')
+          span#passwordError.error
+        button(type='submit') Login
+        .footer
+          a(href='/Signup') Don't have an account? Sign Up
+    script.
+      document.getElementById("loginForm").addEventListener("submit", function (event) {
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        let error = 0; // Reset error count
+
+        // Email validation
+        const emailError = document.getElementById("emailError");
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (email.value.trim() === "") {
+          email.style.border = "1px solid red";
+          emailError.textContent = "Please enter an email address";
+          error++;
+        } else if (!email.value.match(emailRegex)) {
+          email.style.border = "1px solid red";
+          emailError.textContent = "Please enter a valid email address";
+          error++;
+        } else {
+          email.style.border = "1px solid green";
+          emailError.textContent = "";
+        }
+
+        // Password validation
+        const passwordError = document.getElementById("passwordError");
+        if (password.value.trim() === "") {
+          password.style.border = "1px solid red";
+          passwordError.textContent = "Please enter a password";
+          error++;
+        } else {
+          password.style.border = "1px solid green";
+          passwordError.textContent = "";
+        }
+
+        // Prevent form submission if any errors are present
+        if (error > 0) {
+          event.preventDefault();
+        }
+      });

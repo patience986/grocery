@@ -1,0 +1,57 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Trusted Buyer Credit Form
+    link(rel='stylesheet' href='/css/creditsales.css')
+  header
+    h1 HAPPY HOE GROCERY STORE
+    nav
+      a(href='/sales') Sales Records
+      a(href='/credit') Credit Sales
+      a(href='/login') Logout
+  .form-container
+    h1 Credit form
+    form#myForm(action=`/updatecredit?id=${credit._id}` method='post')
+      label(for='name') Buyer's Name:
+      input#name(type='text' name='buyername')
+
+      label(for='nationalId') National ID (NIN):
+      input#nationalId(type='text' name='nationalid')
+
+      label(for='location') Location:
+      input#location(type='text' name='location')
+
+      label(for='contact') Contact:
+      input#contact(type='tel' name='contact')
+
+      label(for='amountDue') Amount Due (UgX):
+      input#amountDue(type='number' name='amountdue')
+
+      label(for='salesAgent') Sales Agent:
+      input#salesAgent(type='text' name='salesagent')
+
+      label(for='dueDate') Due Date:
+      input#dueDate(type='date' name='duedate')
+
+      label(for='productName') Product Name:
+      select#produce(name='producename')
+        option(value='') Select a produce
+        option(value='maize') Maize
+        option(value='soy peas') Soy Peas
+        option(value='g-nuts') g-nuts
+        option(value='rice') Rice
+        option(value='beans') Beans
+
+      label(for='productType') Type of Produce:
+      input#productType(type='text' name='producttype')
+
+      label(for='tonnage') Tonnage (kg):
+      input#tonnage(type='number' name='tonnage')
+
+      label(for='dispatchDate') Date of Dispatch:
+      input#dispatchDate(type='date' name='dispatchdate')
+
+      input(type='submit' value='Submit')
+  script(src='/js/creditsales')

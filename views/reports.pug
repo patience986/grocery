@@ -1,0 +1,63 @@
+extends layout3
+block content
+.container
+h2.text-center.mt-5.mb-4 Revenue Reports
+.row
+.col-md-4.mx-4
+h4.mb-5 Grains Report
+.card.card-custom.mx-2.mb-3.mt-3(style='width: 22rem;')
+.card-body
+h6 Quantity in Stock: #{new Intl.NumberFormat().format(totalgrains.stockQuantity)} Kg
+h6 Total Expense: #{new Intl.NumberFormat().format(totalgrains.totalExpense)} UGX
+h6 Projected Revenue: #{new Intl.NumberFormat().format(totalgrains.totalProjectedRevenue)} UGX
+h6 Projected Profits: #{new Intl.NumberFormat().format(totalgrains.totalProjectedRevenue - totalgrains.totalExpense)} UGX
+p.card-text
+.col-md-4.mx-4
+h4.mb-5 Legumes Report
+.card.card-custom.mx-2.mb-3.mt-3(style='width: 22rem;')
+.card-body
+h6 Quantity in Stock: #{new Intl.NumberFormat().format(totallegumes.stockQuantity)} Kg
+h6 Total Expense: #{new Intl.NumberFormat().format(totallegumes.totalExpense)} UGX
+h6 Projected Revenue: #{new Intl.NumberFormat().format(totallegumes.totalProjectedRevenue)} UGX
+h6 Projected Profits: #{new Intl.NumberFormat().format(totallegumes.totalProjectedRevenue - totallegumes.totalExpense)} UGX
+p.card-text
+
+div.form-row
+div.col.form-group.col-md-12
+br
+form.search(action='/reports')
+div.form-row
+div.col-md-8
+select.form-control(type="text" name='searchProduce')
+option(value="") (Select produce)
+option(value="beans") Beans
+option(value="maize") Maize
+option(value=" soy peas") soypeas
+option(value="rice") Rice
+option(value="soya beans") Soya Beans
+div.col-md-4
+input.btn.btn-primary.btn-block(type="submit")
+table.table.table-striped
+thead
+tr
+th(scope='col') Produce Name
+th(scope='col') Tonnage (Kg)
+th(scope='col') Produce cost per Kg(UGX)
+th(scope='col') Revenue Projected (UGX)
+th(scope='col') Profits Projected(UGX)
+tbody
+if produces.length
+each produce in produces
+tr
+td #{produce.produceName}
+td #{new Intl.NumberFormat().format(produce.tonnage)}
+td #{new Intl.NumberFormat().format(produce.produceCost)}
+
+tr
+th Totals
+td #{new Intl.NumberFormat().format(totalcrop.stockQuantity)}
+td #{new Intl.NumberFormat().format(totalcrop.totalExpense)} (Total Expense)
+td #{new Intl.NumberFormat().format(totalcrop.totalProjectedRevenue)} ( Revenue Projected )
+td #{new Intl.NumberFormat().format(totalcrop.totalProjectedRevenue - totalcrop.totalExpense)} (Profits Projected)
+else
+p That produce has no revenue captured or you haven't selected a crop:(

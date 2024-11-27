@@ -1,0 +1,20 @@
+body { font-family: Arial, sans-serif;  background-image: url("/images/p13.jpeg");}
+        header { background-color:  lightsalmon; color: white; padding: 10px 0; text-align: center; } /* Added valid background color */
+        header nav a { color: black; margin: 0 15px; text-decoration: none; }
+        .container { margin: 50px; }
+        .overview { display: flex; justify-content: space-between; margin-bottom: 20px; }
+        .box {
+            background-color: whitesmoke; 
+            padding: 20px; 
+            width: 22%; 
+            text-align: center; 
+            box-shadow: 5px 30px 30px rgba(20,0,0,20); 
+            transition: transform 0.2s, box-shadow 0.2s; /* Add transition for smooth effect */
+            cursor: pointer; /
+        }
+        .box h2 { font-size: 3em; margin: 0; }
+        .box p { margin: 50px 30px 20px; }
+        .box.moved {
+            transform: scale(1.98); /* Slightly scale down when clicked */
+            box-shadow:  black; /* Reduce shadow on click */
+        }

@@ -1,0 +1,72 @@
+/* Styling the container for the stock cards */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.card {
+  background-color: rgba(249, 243, 244, 0.9); /* L; /* Light salmon background with some transparency */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 2px 5px rgba(10, 44, 10, 0.1);
+  transition: transform 0.2s;
+  background-image: url('/public/images/p13.jpeg'); /* Add your background image */
+  background-size: cover; /* Ensures the image covers the whole card */
+  background-position: center; /* Centers the background image */
+  background-blend-mode: overlay; /* Blends background image with color */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Adds a hover effect */
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #333;
+  
+}
+
+.card p {
+  margin: 10px 0;
+  color: #555;
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+/* For responsiveness - Adjust card width on smaller screens */
+@media screen and (max-width: 768px) {
+  .card {
+      width: calc(50% - 20px); /* Two cards per row on tablets */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+      width: 100%; /* Full-width cards on mobile */
+  }
+}
+body{
+  background-image: url('/images/p13.jpeg'); /* Add your background image */
+  background-size: cover; /* Ensures the image covers the whole card */
+  background-position: center; /* Centers the background image */
+  background-blend-mode: overlay; 
+}
+.button-container{
+  background-color: lightsalmon;
+  padding: 10px;
+  width: 40px;
+  position: center;
+
+}

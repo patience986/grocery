@@ -1,0 +1,25 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Dashboard - KGL Produce Management
+  link(rel='stylesheet' href='/css/dashboard.css')
+header
+  h1 SALES AGENT'S DASHBOARD
+  nav
+    a(href='/sdashboard') Dashboard
+    a(href='/sales') Sales Records
+    a(href='/credit') Credit Sales
+    a(href='/login') Logout
+.container(action='/sdashboard' method='POST')
+  .overview
+    .box
+      h2 #{totalStock} 
+      p Total Stock (kg)
+    .box
+      h2 UGX #{totalSales} 
+      p Total Sales (UgX)
+    .box
+      h2 #{creditSales}
+      p Credit Sales
+script(src='/js/dashboard.js')

@@ -1,0 +1,96 @@
+doctype html 
+html
+  head
+    title Produce List
+    style.
+      /* Internal CSS styling */
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .table th, .table td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      .table-striped tbody tr:nth-of-type(odd) {
+         background-color: rgba(255, 182, 193, 0.7);
+      }
+      .btn {
+        font-size: 0.875rem;
+        padding: 0.375rem 0.75rem;
+        border-radius: 0.25rem;
+        text-decoration: none;
+        display: inline-block;
+        background-color: lightsalmon; /* Light salmon background */
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .btn:hover {
+        background-color: salmon; /* Slightly darker salmon on hover */
+      }
+      .btn:active {
+        background-color: black; /* Button turns black on click */
+      }
+      .text-center {
+        text-align: center;
+      }
+      .mt-5 {
+        margin-top: 3rem;
+      }
+      .mb-4 {
+        margin-bottom: 1.5rem;
+      }
+      .container {
+        width: 90%;
+        margin: 0 auto;
+      }
+      p {
+        text-align: center;
+        font-size: 1.125rem;
+      }
+      .btn-container {
+        text-align: right;
+        margin-bottom: 20px;
+      }
+  body
+    .container
+      .btn-container
+        a.btn(href='/produce') To the produce form
+        
+      h2.text-center.mt-5.mb-4 PRODUCE LIST
+      table.table.table-striped
+        thead
+          tr
+            th(scope='col') PRODUCE NAME
+            th(scope='col') STORE BRANCH
+            th(scope='col') TONNAGE(KG)
+            th(scope='col') PRODUCE COST PER KG(UGX)
+            th(scope='col') PRODUCE SOURCE
+            th(scope='col') CONTACT 
+            th(scope='col') SELLING PRICE PER KG(UGX)
+            th(scope='col') DATE
+            th(scope='col') ACTION
+        tbody
+          if produces.length
+            each produce in produces
+              tr
+                td #{produce.producename}
+                td #{produce.branch}
+                td #{produce.tonnage}
+                td #{produce.cost}
+                td #{produce.source}
+                td #{produce.contact}
+                td #{produce.price}
+                td #{produce.dateTime}
+                td
+                  a.btn.btn-sm(href='/updateproduce/' + produce._id) Update
+                td
+                  form(method="post" action='/deleteproduce')
+                    input(type="hidden", name="id", value=produce._id)
+                    button.btn.btn-sm(type="submit") Delete
+          else
+            tr
+              td(colspan='9') No produce yet

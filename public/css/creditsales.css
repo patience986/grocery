@@ -1,0 +1,89 @@
+.form-container {
+    max-width: 800px; /* Increased width for a two-column layout */
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: rgba(255, 182, 193, 0.7); /* Light transparent color */
+    box-shadow: 0 4px 8px rgba(50, 50, 50, 0.2);
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    grid-gap: 10px; /* Gap between form elements and error messages */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 5px; /* Space between input and error message */
+    border-radius: 4px;
+    border: 1px solid #ccc; /* Added border */
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: lightsalmon;
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    grid-column: span 2; /* Submit button spans two columns */
+}
+
+input[type="submit"]:hover {
+    background-color: black;
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+    grid-column: span 2; /* Error message spans both columns */
+    margin-top: 0; /* No extra margin needed here */
+}
+
+body {
+    background-image: url('/images/p13.jpeg'); /* Replace with your actual image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+header {
+    background-color: black;
+    color: lightsalmon;
+    padding: 5px 5px;
+    text-align: left;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+}
+
+nav a {
+    color: lightsalmon;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+nav a:hover {
+    background-color: white;
+    color: black;
+}

@@ -1,0 +1,144 @@
+title Credits
+style.
+  /* Internal CSS styling */
+  .table-container {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .table-boxed {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  .table-boxed tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0.1, 0.1);
+  }
+
+  .table-boxed th, .table-boxed td {
+    padding: 1px;
+    text-align: left;
+  }
+
+  .table-boxed thead {
+    display: none; /* Hide the header inside each boxed row */
+  }
+
+  .table-boxed tbody tr td:nth-of-type(1)::before { content: "BUYER'S NAME: "; }
+  .table-boxed tbody tr td:nth-of-type(2)::before { content: "NATIONAL ID: "; }
+  .table-boxed tbody tr td:nth-of-type(3)::before { content: "LOCATION: "; }
+  .table-boxed tbody tr td:nth-of-type(4)::before { content: "CONTACT: "; }
+  .table-boxed tbody tr td:nth-of-type(5)::before { content: "AMOUNT DUE: "; }
+  .table-boxed tbody tr td:nth-of-type(6)::before { content: "DUE DATE: "; }
+  .table-boxed tbody tr td:nth-of-type(7)::before { content: "SALES AGENT: "; }
+  .table-boxed tbody tr td:nth-of-type(8)::before { content: "PRODUCT NAME: "; }
+  .table-boxed tbody tr td:nth-of-type(9)::before { content: "TONNAGE: "; }
+  .table-boxed tbody tr td:nth-of-type(10)::before { content: "DISPATCH DATE: "; }
+  .table-boxed tbody tr td:nth-of-type(11)::before { content: "ACTION: "; }
+
+  .btn {
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-secondary, .btn-primary, .btn-danger {
+    background-color: lightSalmon;
+    color: #fff;
+  }
+
+  .btn-secondary:active, .btn-primary:active, .btn-danger:active {
+    background-color: black;
+    color: #fff;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .mt-5 {
+    margin-top: 3rem;
+  }
+
+  .mb-4 {
+    margin-bottom: 1.5rem;
+  }
+
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  p {
+    text-align: center;
+    font-size: 1.125rem;
+  }
+
+  .btn-back {
+    background-color: lightSalmon;
+    color: #fff;
+    float: right;
+    margin-bottom: 1rem;
+    text-decoration: none;
+  }
+
+  .btn-back:active {
+    background-color: black;
+    color: #fff;
+  }
+
+body
+  .container
+    a.btn.btn-back(href='/credit') Back to Credit form
+
+    h2.text-center.mt-5.mb-4 CREDITS LIST
+    .table-container
+      table.table-boxed
+        thead
+          tr
+            th(scope='col') BUYER'S NAME
+            th(scope='col') NATIONAL ID
+            th(scope='col') LOCATION
+            th(scope='col') CONTACT
+            th(scope='col') AMOUNT DUE
+            th(scope='col') DUE DATE 
+            th(scope='col') SALES AGENT 
+            th(scope='col') PRODUCT NAME
+            th(scope='col') TONNAGE 
+            th(scope='col') DISPATCH DATE 
+            th(scope='col') ACTION
+        tbody
+          if credits.length
+            each credit in credits
+              tr
+                td #{credit.buyername}
+                td #{credit.nationalid}
+                td #{credit.location}
+                td #{credit.contact}
+                td #{credit.amountdue}
+                td #{credit.duedate}
+                td #{credit.salesagent}
+                td #{credit.producename}
+                td #{credit.tonnage}
+                td #{credit.dispatchdate}
+                td
+                  a.btn.btn-primary.btn-sm(href='/updatecredit/'+credit._id) Update
+                td
+                  form(method="post" action='/deletecredit')
+                    input(type="hidden" name="id" value=credit._id)
+                    button.btn.btn-danger.btn-sm(type="submit") Delete
+          else
+            tr
+              td(colspan='11') No credits available.

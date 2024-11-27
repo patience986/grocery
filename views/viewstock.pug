@@ -1,0 +1,78 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title View Stock - Produce Cards
+    link(rel='stylesheet' href='/css/stock.css') 
+    style.
+      /* Inline styles to make it black and white */
+      body {
+        background-color: #ffffff;
+        color: #000000;
+        font-family: Arial, sans-serif;
+      }
+      header h1 {
+        text-align: center;
+        color: #000000;
+        margin-bottom: 20px;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+      .card {
+        border: 1px solid #000000;
+        padding: 15px;
+        width: 250px;
+        text-align: left;
+        background-color: #ffffff;
+        color: #000000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .card h3 {
+        margin-bottom: 10px;
+      }
+      .card p {
+        margin: 5px 0;
+      }
+      .button-container {
+        margin-top: 30px;
+        text-align: center;
+      }
+      .view-button {
+        display: inline-block;
+        text-decoration: none;
+        background-color: #000000;
+        color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 5px;
+      }
+      .view-button:hover {
+        background-color: #333333;
+      }
+  body
+    header
+      h1  View Stock
+    .container
+      .card-container
+        if produces.length > 0
+          each produce in produces
+            .card
+              h3= produce.producename 
+              p Type: #{produce.typeofproduce}  
+              p Source: #{produce.source}  
+              p Tonnage: #{produce.tonnage} kg
+              form(action='/updateTonnage', method='post')
+        else
+          p No produce items found.
+    .button-container
+      a.view-button(href='/Signup') Signup
+    script(src='/js/viewstock.js')

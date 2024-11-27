@@ -1,0 +1,68 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Trusted Buyer Credit Form
+    link(rel="stylesheet" href="/css/creditsales.css")
+  body
+    header
+      h1 HAPPY HOE GROCERY STORE                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           .
+      nav
+        a(href="/sales") Sales Records
+        a(href="/credit") Credit Sales
+        a(href="/login") Logout
+
+    .form-container
+      h1 Credit Form
+      form#myForm(action="/credit" method="post")
+        label(for="name") Buyer's Name:
+        input#name(type="text" name="buyername" )
+        span#errorName.error 
+        
+        label(for="nationalId") National ID (NIN):
+        input#nationalId(type="text" name="nationalid")
+        span#errorNationalId.error
+        label(for="location") Location:
+        input#location(type="text" name="location" )
+        span#errorLocation.error 
+
+        label(for="contact") Contact:
+        input#contact(type="tel" name="contact" )
+        span#errorContact.error 
+
+        label(for="amountDue") Amount Due (UgX):
+        input#amountDue(type="number" name="amountdue" )
+        span#errorAmountDue.error 
+
+        label(for="salesAgent") Sales Agent:
+        input#salesAgent(type="text" name="salesagent")
+        span#errorSalesAgent.error 
+        label(for="dueDate") Due Date:
+        input#dueDate(type="date" name="duedate" )
+        span#errorDueDate.error 
+        label(for="productName") Product Name:
+        select#produce(name="producename")
+          option(value="") Select a produce
+          option(value="maize") Maize
+          option(value="soy peas") Soy Peas
+          option(value="g-nuts") g-nuts
+          option(value="rice") Rice
+          option(value="beans") Beans
+        span#errorProductName.error 
+
+        label(for="productType") Type of Produce:
+        input#productType(type="text" name="producttype" )
+        span#errorProductType.error 
+
+        label(for="tonnage") Tonnage (kg)
+        input#tonnage(type="number" name="tonnage" )
+        span#errorTonnage.error 
+
+        label(for="dispatchDate") Date of Dispatch:
+        input#dispatchDate(type="date" name="dispatchdate" )
+        span#errorDispatchDate.error 
+
+        input(type="submit" value="Submit")
+
+    script(src="/js/creditsales.js")

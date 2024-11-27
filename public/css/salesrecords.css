@@ -1,0 +1,102 @@
+/* Form Container Styles */
+.form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: rgba(255, 182, 193, 0.7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Label Styles */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Input and Select Field Styles */
+input[type="text"],
+input[type="number"],
+input[type="datetime-local"],
+select {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Submit Button Styles */
+input[type="submit"] {
+    background-color: lightsalmon;
+    color: white;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* Submit Button Hover Effect */
+input[type="submit"]:hover {
+    background-color: black;
+}
+
+/* Error Message Styles */
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: -8px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Form Title Styles */
+.h1 {
+    text-align: center;
+    color: black;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+/* Body Background and Layout Styles */
+body {
+    background-image: url('/images/p13.jpeg'); /* Replace with your actual image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+}
+
+/* Header Styles */
+header {
+    background-color: lightsalmon;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Navigation Bar Styles */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color:black;
+}
+
+nav a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Navigation Link Hover Effect */
+nav a:hover {
+    background-color: white;
+    color: black;
+}

@@ -1,0 +1,100 @@
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Welcome to Happy Hoe Grocery Store
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background: url('/images/background.jpg') no-repeat center center fixed; /* Replace with your image path */
+        background-size: cover;
+        overflow: hidden;
+        padding: 20px; /* Add space between content and boundaries */
+        box-sizing: border-box; /* Include padding in height/width calculation */
+        filter: grayscale(100%); /* Makes the background image black and white */
+      }
+      .boundary {
+        width: 100%;
+        max-width: 1200px;
+        height: auto;
+        border: 10px solid #000; /* Black for the boundary */
+        box-sizing: border-box; /* Ensure padding/border do not affect size */
+        border-radius: 15px; /* Rounded corners for the boundary */
+        background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+        padding: 20px;
+      }
+      .container {
+        text-align: center;
+        padding: 20px;
+      }
+      .tagline {
+        font-size: 6em;
+        color: #000; /* Black for text */
+        margin-bottom: 20px;
+      }
+      .word {
+        font-size: 3em;
+        margin-bottom: 10px;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        color: #555; /* Dark gray for text */
+      }
+      .description {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+        color: #444; /* Medium gray for text */
+      }
+      .button-container {
+        margin-top: 20px;
+      }
+      .view-button {
+        padding: 10px 20px;
+        font-size: 1.2em;
+        background-color: #000; /* Black for buttons */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        margin: 0 10px;
+        transition: background-color 0.3s ease-in-out;
+      }
+      .view-button:hover {
+        background-color: #555; /* Dark gray on hover */
+      }
+  body
+    .boundary
+      .container
+        .tagline Welcome to Happy Hoe Grocery Store!
+        .description Fresh Produce, Quality Products, and Friendly Service
+        //- #word1.word Happy
+        //- #word2.word Hoe
+        //- #word3.word Grocery
+        //- #word4.word Store
+        .button-container
+          a.view-button(href="/viewstock" aria-label="View Stock") View Stock
+          //- a.view-button(href="/aboutus" aria-label="Learn About Us") Learn About Us
+    script.
+      // Function to show words one after another
+      function showWords() {
+        const words = [
+          document.getElementById('word1'),
+          document.getElementById('word2'),
+          document.getElementById('word3'),
+          document.getElementById('word4')
+        ];
+        words.forEach((word, index) => {
+          setTimeout(() => {
+            word.style.opacity = 1;
+          }, index * 1000); // Display each word 1 second after the previous one
+        });
+      }
+      // Call the function when the page loads
+      window.onload = showWords;

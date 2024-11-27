@@ -1,0 +1,225 @@
+
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Sign Up Form
+  style.
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("images/p13.jpeg");
+    }
+    .form-container {
+    background-color:rgba(255, 182, 193, 0.7); ;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 5px;
+    }
+    h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: black;
+    }
+    form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    }
+    label {
+    color: #333;
+    margin-bottom: 5px;
+    }
+    input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    }
+    input:focus, select:focus {
+    outline: none;
+    border-color: #004080;
+    }
+    span.error {
+    font-size: 14px;
+    color: red;
+    margin-top: -10px;
+    display: block;
+    }
+    button {
+    grid-column: 1 / span 2;
+    width: 50%;
+    padding: 10px;
+    background-color: lightsalmon ;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    }
+    button:hover {
+    background-color: black;
+    }
+    .full-width {
+    grid-column: 1 / span 2;
+    }
+    @media (max-width: 600px) {
+    form {
+    grid-template-columns: 1fr;
+    }
+    button {
+    grid-column: 1 / span 1;
+    }
+    }
+.form-container
+  h2 Sign Up Form
+  form#signupForm(action='/Signup' method='POST')
+    div
+      label(for='username') Username:
+      input#username(type='text' name='username')
+      span#username-error.error
+    div
+      label(for='email') Email:
+      input#email(type='email' name='email' placeholder='email')
+      span#emailError.error
+    div
+      label(for='branch') Branch:
+      select#branch(name='branch')
+        option(value='') Select Branch
+        option(value='Maganjo') Maganjo
+        option(value='Matugga') Matugga
+      span#branchError.error
+    div
+      label(for='role') Role:
+      select#role(name='role')
+        option(value='') Select Role
+        option(value='salesagent') Sales Agent
+        option(value='manager') Manager
+      span#roleError.error
+    div
+      label(for='password') Password:
+      input#password(type='password' name='password' placeholder='password')
+      span#passwordError.error
+    div
+      label(for='confirmpassword') Confirm Password:
+      input#confirmpassword(type='password' name='confirmpassword' placeholder='confirm your password')
+      span#confirmpasswordError.error
+    button(type='submit') Sign Up
+    .footer
+    a(href='/login') Already have account
+script.
+  document.getElementById("signupForm").addEventListener("submit", function (event) {
+  const username = document.getElementById("username");
+  const email = document.getElementById("email");
+  const password = document.getElementById("password");
+  const confirmPassword = document.getElementById("confirmpassword");
+  const telephone = document.getElementById("telephone");
+  const branch = document.getElementById("branch");
+  const role = document.getElementById("role");
+  let error = 0; // Reset error count
+  // Username validation
+  const usernameError = document.getElementById("username-error");
+  if (username.value.trim() === "") {
+  username.style.border = "1px solid red";
+  usernameError.textContent = "Please enter a username";
+  error++;
+  } else {
+  username.style.border = "1px solid green";
+  usernameError.textContent = "";
+  }
+  // Email validation
+  const emailError = document.getElementById("emailError");
+  const emailRegex = ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+  if (email.value.trim() === "") {
+  email.style.border = "1px solid red";
+  emailError.textContent = "Please enter an email address";
+  error++;
+  } else if (!email.value.match(emailRegex)) {
+  email.style.border = "1px solid red";
+  emailError.textContent = "Please enter a valid email address";
+  error++;
+  } else {
+  email.style.border = "1px solid green";
+  emailError.textContent = "";
+  }
+  // Branch validation
+  const branchError = document.getElementById("branchError");
+  if (branch.value === "") {
+  branch.style.border = "1px solid red";
+  branchError.textContent = "Please select a branch";
+  error++;
+  } else {
+  branch.style.border = "1px solid green";
+  branchError.textContent = "";
+  }
+  // Role validation
+  const roleError = document.getElementById("roleError");
+  if (role.value === "") {
+  role.style.border = "1px solid red";
+  roleError.textContent = "Please select a role";
+  error++;
+  } else {
+  role.style.border = "1px solid green";
+  roleError.textContent = "";
+  }
+  // Password validation
+  const passwordError = document.getElementById("passwordError");
+  if (password.value.trim() === "") {
+  password.style.border = "1px solid red";
+  passwordError.textContent = "Please enter a password";
+  error++;
+  } else if (password.value.length < 6) {
+  password.style.border = "1px solid red";
+  passwordError.textContent = "Password should be at least 6 characters";
+  error++;
+  } else {
+  password.style.border = "1px solid green";
+  passwordError.textContent = "";
+  }
+  // Confirm Password validation
+  const confirmPasswordError = document.getElementById("confirmpasswordError");
+  if (confirmPassword.value.trim() === "") {
+  confirmPassword.style.border = "1px solid red";
+  confirmPasswordError.textContent = "Please confirm your password";
+  error++;
+  } else if (confirmPassword.value !== password.value) {
+  confirmPassword.style.border = "1px solid red";
+  confirmPasswordError.textContent = "Passwords do not match";
+  error++;
+  } else {
+  confirmPassword.style.border = "1px solid green";
+  confirmPasswordError.textContent = "";
+  }
+  // Telephone validation
+  const telephoneError = document.getElementById("telephoneError");
+  const internationalPhoneRegex = /^\\+\d{1,15}$/;
+  const phoneRegex = /^\\d{10}$/;
+  if (telephone.value.trim() === "") {
+  telephone.style.border = "1px solid red";
+  telephoneError.textContent = "Please enter a phone number";
+  error++;
+  } else if (
+  !telephone.value.match(phoneRegex) &&
+  !telephone.value.match(internationalPhoneRegex)
+  ) {
+  telephone.style.border = "1px solid red";
+  telephoneError.textContent = "Please enter a valid 10-digit or international number";
+  error++;
+  } else {
+  telephone.style.border = "1px solid green";
+  telephoneError.textContent = "";
+  }
+  // Prevent form submission if any errors are present
+  if (error > 0) {
+  event.preventDefault();
+  }
+  });

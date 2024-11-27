@@ -1,0 +1,99 @@
+doctype html
+html
+  head
+    title Sales List
+    style.
+      /* Internal CSS styling */
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .table th, .table td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(255, 182, 193, 0.7);
+      }
+      .btn {
+        font-size: 0.875rem;
+        padding: 0.375rem 0.75rem;
+        border-radius: 0.25rem;
+        text-decoration: none;
+        display: inline-block;
+        background-color: lightsalmon; /* Light salmon background */
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .btn:hover {
+        background-color: salmon; /* Slightly darker salmon on hover */
+      }
+      .btn:active {
+        background-color: black; /* Button turns black on click */
+      }
+      .text-center {
+        text-align: center;
+      }
+      .mt-5 {
+        margin-top: 3rem;
+      }
+      .mb-4 {
+        margin-bottom: 1.5rem;
+      }
+      .container {
+        width: 90%;
+        margin: 0 auto;
+      }
+      p {
+        text-align: center;
+        font-size: 1.125rem;
+      }
+      .btn-container {
+        text-align: right;
+        margin-bottom: 20px;
+      }
+
+  body
+    .container
+      // Button container with the dashboard and sales form buttons
+      .btn-container
+        a.btn(href='/sales') Back to Sales Form
+
+      h2.text-center.mt-5.mb-4 SALES LIST
+
+      table.table.table-striped
+        thead
+          tr
+            th(scope='col') PRODUCE NAME
+            th(scope='col') TONNAGE(KG)
+            th(scope='col') AMOUNT PAID(UGX)
+            th(scope='col') BUYER'S NAME
+            th(scope='col') SALES AGENT
+            th(scope='col') BRANCH
+            th(scope='col') DATE AND TIME
+            th(scope='col') ACTION
+        tbody
+          if sales.length
+            each sale in sales
+              tr
+                td #{sale.producename}
+                td #{sale.tonnage}
+                td #{sale.amountpaid}
+                td #{sale.buyername}
+                td #{sale.salesagent}
+                td #{sale.branch}
+                td #{sale.datetime}
+                td
+                  a.btn.btn-sm(href=`/updatesale/${sale._id}`) Update
+                td
+                  form(method="post", action='/deletesales')
+                    input(type="hidden", name="id", value=sale._id)
+                    button.btn.btn-sm(type="submit") Delete
+                td
+                  a.btn.btn-sm(href=`/receipt/${sale._id}`) View Receipt
+          else
+            tr
+              td(colspan='8') No sales yet

@@ -1,0 +1,72 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Add New Produce
+    link(rel="stylesheet" href="/css/procuremanagent.css")
+  body
+    header
+      h1 HAPPY HOE GROCERY STORE
+      nav
+  
+        a(href="/sales") Sales Records
+        a(href="/credit") Credit Sales
+        a(href="/login") Logout
+    .container
+      h2 Add New Produce
+      form#produceForm(action="/produce" method="post")
+        .form-row
+          label(for="produce") Produce Name
+          select#produce(name="producename" )
+            option(value="") Select a produce
+            option(value="maize") Maize
+            option(value="soy peas") Soy Peas
+            option(value="g-nuts") G-nuts
+            option(value="rice") Rice
+            option(value="beans") Beans
+          small#produceError.error-message
+        .form-row
+          label(for="typeofproduce") Produce Type
+          select#type(name="typeofproduce" )
+            option(value="") Select produce type
+            option(value="legume") Legume
+            option(value="grain") Grain
+          small#typeError.error-message
+        .form-row
+          label(for="source") Source of produce
+          select#source(name="source" )
+            option(value="") Select a source
+            option(value="individual-salers") Individual Dealers
+            option(value="other-companies") Other Companies
+            option(value="Maganjo") Maganjo
+            option(value="Matugga") Matugga
+          small#sourceError.error-message
+        .form-row
+          label(for="dateTime") Date of purchase
+          input#date(type="date" name="dateTime" )
+          small#dateError.error-message
+        .form-row
+          label(for="tonnage") Tonnage (kg)
+          input#tonnage(type="number" name="tonnage" )
+          small#tonnageError.error-message
+        .form-row
+          label(for="cost") Produce cost (UGX)
+          input#cost(type="number" )
+          small#costError.error-message &ge; 10,000 UGX.
+        .form-row
+          label(for="branch") Stocking Branch
+          select#branch(name="branch" required)
+            option(value="") Select a branch
+            option(value="Matugga") Matugga
+            option(value="Maganjo") Maganjo
+          small#branchError.error-message
+        .form-row
+          label(for="contact") Contact
+          input#contact(type="tel" name="contact" )
+          small#contactError.error-message
+        .form-row
+          label(for="price") Selling Price
+          input#selling_price(type="number" )
+        button(type="submit") Submit
+    script(src="/js/produce.js")
